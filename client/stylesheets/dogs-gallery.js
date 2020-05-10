@@ -10,7 +10,7 @@ let failHandler = () => {
       let imgElem;
       let prefixURL =
         'https://dog.ceo/api/breed/';
-      let suffixURL = '/images/random';
+      let suffixURL = '/images/random/6';
       //get value entered by user from textbox
       let breedTag = document.querySelector('input[type = "text"]').value;
       let requestURL = prefixURL + breedTag + suffixURL;
@@ -19,9 +19,10 @@ let failHandler = () => {
       //clear old photos
       document.querySelector('.photos').innerHTML = '';
 
-      $.getJSON(requestURL, function(flickrResponse) {
-        flickrResponse.items.forEach(function(item, index) {
-          //Flickr returns 20 images by default
+      $.getJSON(requestURL, function(dogAPIResponse) {
+        console.log(dogAPIResponse.message);
+        dogAPIResponse.message.forEach((imgURL, index) => {
+
           //We need only six images for the Gallery
           if (index < 6) {
             // create a new element to hold the image
@@ -30,7 +31,7 @@ let failHandler = () => {
             imgElem.hidden = true;
 
             // set the attribute to the response url
-            imgElem.setAttribute('src', item.media.m);
+            imgElem.setAttribute('src', imgURL);
             imgElem.setAttribute('width', '100');
 
             // attach the img tag to the main
