@@ -38,19 +38,30 @@ let findAllbitBatBotOrNots1 = (arr) => {
 
 };
 
-findAllbitBatBotOrNotsXc = (arr) => {
-
-  let result = [];
-
-  for (let num in arr) {
-
-    result.push(arr[num] + ": " + bitBatBotOrNot(arr[num]));
-
+let findAllbitBatBotOrNots2 =(arr) => {
+  resultArray = [];
+  for (let i = 0; i < arr.length; i++) {
+    result = "";
+    x = arr[i];
+    if (x % 3 == 0){
+      result += 'Bit';
+    }
+    if (x % 5 == 0){
+      result += 'Bat';
   }
-
-  return result;
-
+  if (x % 7 == 0){
+    result += 'Bot';
+}
+if ((x % 3 != 0) && (x % 5 != 0) && (x % 7 != 0)){
+  result =  `${result}Not`;
+}
+resultArray.push(arr[i] + ': ' + result);
+}
+return resultArray;
 };
+
+
+
 
 findAllbitBatBotOrNots3 = (arr) => {
 
@@ -65,18 +76,28 @@ result.push(num+": "+bitBatBotOrNot(num));
 return result;
 
 };
+findAllbitBatBotOrNotsXc = (arr) => {
 
-let findAllbitBatBotOrNots4 = (arr) => {
-let result = [];
-arr.forEach()
-}
+  let result = [];
+
+  for (let num in arr) {
+
+    result.push(arr[num] + ": " + bitBatBotOrNot(arr[num]));
+
+  }
+
+  return result;
+
+};
+
+
 
 
 
 console.log(findAllbitBatBotOrNots1(arrOf1To100));
 
-console.log(findAllbitBatBotOrNotsXc(arrOf1To100));
+console.log(findAllbitBatBotOrNots2(arrOf1To100));
 
 console.log(findAllbitBatBotOrNots3(arrOf1To100));
 
-console.log(findAllbitBatBotOrNots4(arrOf1To100));
+console.log(findAllbitBatBotOrNotsXc(arrOf1To100));
